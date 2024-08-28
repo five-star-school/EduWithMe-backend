@@ -32,6 +32,7 @@ public class RoomRepositoryImpl implements RoomRepositoryCustom {
                 user.nickName))
             .from(room)
             .leftJoin(user).on(room.managerUserId.eq(user.id))
+            .fetchJoin()
             .offset(pageable.getOffset())
             .limit(pageable.getPageSize())
             .orderBy(room.createdAt.desc())
